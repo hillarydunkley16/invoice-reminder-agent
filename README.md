@@ -26,14 +26,16 @@ This project automates overdue invoice reminders using n8n, Google Sheets, Gmail
 6. Human approval step
 7. Send approved emails
 
-# Main Workflow Image 
+ 
+## Full Workflow Architecture
 ![Workflow Screenshot](screenshots/MainWorkflow.png)
-# Sub Workflow Image
-![Subworkflow Screenshot](screenshots/SubWorkflow.png)
-# Approval Email
-![Approval Email](screenshots/ApprovalEmail.png)
-# Output 
+## Output 
 ![Output](screenshots/Output.png)
+## Human In the Loop Sub Workflow Image
+![Subworkflow Screenshot](screenshots/SubWorkflow.png)
+## Human In the Loop Approval Email
+![Approval Email](screenshots/ApprovalEmail.png)
+
 
 # Main Technical Issues Encountered
 
