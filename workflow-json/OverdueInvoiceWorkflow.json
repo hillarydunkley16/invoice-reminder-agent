@@ -1,0 +1,395 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an accounts receivable assistant.\n\nUse ONLY the invoice data below.\nDo not invent customers or invoices.\n\n{{ JSON.stringify($input.all()) }}\n\nTasks:\n1. Identify overdue invoices\n2. Group invoices by customer\n3. Calculate total overdue amount\n4. Generate a professional reminder email draft\n\n\nReturn valid JSON only.\nDo not include explanations.\nDo not include markdown or code fences.\nFollow the output format required by the system.\nEach customer MUST include a valid customerEmail field from the input data. Do not omit it.\n\nReturn data like this:\n{\n  \"customers\": [\n    {\n      \"customerName\": \"...\",\n      \"email\": \"...\",\n      \"invoiceID\": \"...\",\n      \"amount\": 0,\n      \"emailSubject\": \"...\",\n      \"emailBody\": \"...\"\n    }\n  ]\n}\nDo not wrap the response in an \"output\" object.",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        1472,
+        -16
+      ],
+      "id": "9475a4b0-8721-45d0-9b33-d7bc9b5e7553",
+      "name": "AI Agent",
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        1136,
+        208
+      ],
+      "id": "ddde4483-0b06-4b9f-b850-d4dc33d14633",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "juKQuYYN5p6OYMtl",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"array\",\n  \"items\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"customerName\": { \"type\": \"string\" },\n      \"email\": { \"type\": \"string\" },\n      \"invoiceID\": { \"type\": \"string\" },\n      \"amount\": { \"type\": \"number\" },\n      \"emailSubject\": { \"type\": \"string\" },\n      \"emailBody\": { \"type\": \"string\" }\n    },\n    \"required\": [\n      \"customerName\",\n      \"email\",\n      \"invoiceID\",\n      \"amount\",\n      \"emailSubject\",\n      \"emailBody\"\n    ]\n  }\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        1616,
+        256
+      ],
+      "id": "ffdf032f-d9b7-4e05-911d-cfe04314d945",
+      "name": "Structured Output Parser",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $execution.id }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1312,
+        256
+      ],
+      "id": "f2f596da-88fa-4460-a12a-8e6fafec09bd",
+      "name": "Simple Memory1",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                1
+              ]
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        336,
+        0
+      ],
+      "id": "d3701687-06b9-4d8e-8731-2dea568bb321",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1oxuny4mYoWArQwYjUOFGD3ThF7IrSOFC-653kINudLw",
+          "mode": "list",
+          "cachedResultName": "Dummy Data n8n",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1oxuny4mYoWArQwYjUOFGD3ThF7IrSOFC-653kINudLw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1oxuny4mYoWArQwYjUOFGD3ThF7IrSOFC-653kINudLw/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        544,
+        0
+      ],
+      "id": "d97686a6-f119-4117-a7fe-b0f8d315d6b9",
+      "name": "Get row(s) in sheet",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "qRlX8USHddrdVU1x",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "2ecdd31e-2626-4ce3-905f-bbceee8c7500",
+              "leftValue": "={{ $json.Status }}",
+              "rightValue": "=Overdue",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        784,
+        -16
+      ],
+      "id": "75047122-a390-4939-bf03-0b257dbe03f0",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "maxItems": 5
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1072,
+        -16
+      ],
+      "id": "7c6bf814-ff9c-4e40-a668-9e7fc96cf2ce",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        -16
+      ],
+      "id": "0131596d-fd1a-4eed-857f-a7c7adc723e2",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        16
+      ],
+      "id": "9e7c9789-43b3-4159-963e-29a0cdf51391",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2032,
+        -32
+      ],
+      "id": "2a09b8b6-4458-4ea0-9dfc-45fcb8332255",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "l44hRuPhqdy8NlRy",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/l44hRuPhqdy8NlRy",
+          "cachedResultName": "My Sub-Workflow 1"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        2224,
+        64
+      ],
+      "id": "6a603944-b7c5-412d-a709-b2ab384a4f20",
+      "name": "Call 'My Sub-Workflow 1'",
+      "alwaysOutputData": false,
+      "executeOnce": false
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Call 'My Sub-Workflow 1'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'My Sub-Workflow 1'": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "30dfedb4-a71f-4150-96de-c3b6738f4dc4",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ffd95b0d12a70c9f963c88f73df1db6aa9810c16fa5a1576974dfd19b8950ed0"
+  },
+  "id": "ox5BYCMh4zCJqlqw",
+  "tags": []
+}
