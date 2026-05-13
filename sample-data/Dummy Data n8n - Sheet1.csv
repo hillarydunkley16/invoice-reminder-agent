@@ -1,0 +1,101 @@
+InvoiceID,Customer,Amount,Category,Status,Date,Email,Phone
+INV-1001,Northwind Medical,"$1,250.00",Medical Supplies,Paid,2026-05-01,hvgdunkley@gmail.com,(555) 709-4205
+INV-1002,Green Valley Clinic,"$3,200.50",Consulting,Pending,2026-05-02,greenvalleyclinic@example.com,(555) 269-0197
+INV-1003,Sunrise Dental,$875.25,Software,Paid,2026-05-03,sunrisedental@example.com,(555) 888-0891
+INV-1004,Metro Health Partners,"$4,520.00",Equipment,Overdue,2026-05-04,hvgdunkley@gmail.com,(555) 891-3434
+INV-1005,Lakeside Pediatrics,$199.99,Subscriptions,Paid,2026-05-05,lakesidepediatrics@example.com,(555) 337-2227
+INV-1006,Buffalo Rehab Center,"$2,200.00",Insurance Services,Pending,2026-05-06,buffalorehabcenter@example.com,(555) 531-5677
+INV-1007,Westside Family Care,$980.40,Medical Supplies,Overdue,2026-05-07,westsidefamilycare@example.com,(555) 490-4484
+INV-1008,Elmwood Diagnostics,"$6,100.00",Consulting,Paid,2026-05-08,elmwooddiagnostics@example.com,(555) 361-6194
+INV-1009,Northern Lights Optics,"$5,861.94",Medical Supplies,Overdue,2026-05-09,northernlightsoptics@example.com,(555) 675-7836
+INV-1010,Central Lab Services,"$7,366.21",Software,Overdue,2026-05-10,centrallabservices@example.com,(555) 257-1470
+INV-1011,South Shore Orthopedics,"$3,460.60",Insurance Services,Overdue,2026-05-11,southshoreorthopedics@example.com,(555) 126-2111
+INV-1012,Northern Lights Optics,"$2,872.08",Consulting,Pending,2026-05-12,northernlightsoptics@example.com,(555) 452-8369
+INV-1013,City Medical Group,"$6,522.96",Medical Supplies,Pending,2026-05-13,citymedicalgroup@example.com,(555) 785-9301
+INV-1014,Northern Lights Optics,"$5,121.79",Equipment,Pending,2026-05-14,northernlightsoptics@example.com,(555) 980-6312
+INV-1015,South Shore Orthopedics,"$7,033.74",Medical Supplies,Overdue,2026-05-15,southshoreorthopedics@example.com,(555) 106-2861
+INV-1016,Riverbend Specialists,"$8,561.42",Software,Pending,2026-05-16,riverbendspecialists@example.com,(555) 971-2380
+INV-1017,Pinecrest Health,"$1,596.11",Subscriptions,Paid,2026-05-17,pinecresthealth@example.com,(555) 441-2944
+INV-1018,Coastal Family Medicine,"$7,942.23",Equipment,Pending,2026-05-18,coastalfamilymedicine@example.com,(555) 415-6339
+INV-1019,Coastal Family Medicine,"$5,285.64",Software,Paid,2026-05-19,coastalfamilymedicine@example.com,(555) 317-6217
+INV-1020,Valley View Diagnostics,"$7,920.89",Insurance Services,Overdue,2026-05-20,valleyviewdiagnostics@example.com,(555) 134-0935
+INV-1021,Central Lab Services,"$3,703.32",Equipment,Paid,2026-05-21,centrallabservices@example.com,(555) 497-8647
+INV-1022,Oak Ridge Hospital,"$9,690.66",Medical Supplies,Overdue,2026-05-22,oakridgehospital@example.com,(555) 356-6481
+INV-1023,Valley View Diagnostics,"$3,854.74",Software,Pending,2026-05-23,valleyviewdiagnostics@example.com,(555) 513-9766
+INV-1024,Valley View Diagnostics,"$3,862.39",Consulting,Pending,2026-05-24,valleyviewdiagnostics@example.com,(555) 911-7787
+INV-1025,Harbor View Clinic,"$3,634.39",Equipment,Paid,2026-05-25,harborviewclinic@example.com,(555) 712-7283
+INV-1026,Valley View Diagnostics,"$3,574.63",Medical Supplies,Paid,2026-05-26,valleyviewdiagnostics@example.com,(555) 438-5743
+INV-1027,Harbor View Clinic,"$3,319.45",Software,Paid,2026-05-27,harborviewclinic@example.com,(555) 505-1675
+INV-1028,Prairie Rose Clinic,$530.12,Medical Supplies,Overdue,2026-05-28,prairieroseclinic@example.com,(555) 531-5523
+INV-1029,Harbor View Clinic,$413.43,Insurance Services,Pending,2026-05-29,harborviewclinic@example.com,(555) 888-1363
+INV-1030,Eastside Wellness,"$6,318.96",Equipment,Paid,2026-05-30,eastsidewellness@example.com,(555) 312-8295
+INV-1031,Riverbend Specialists,"$6,908.76",Insurance Services,Paid,2026-05-31,riverbendspecialists@example.com,(555) 864-0462
+INV-1032,City Medical Group,"$7,353.94",Equipment,Overdue,2026-06-01,citymedicalgroup@example.com,(555) 255-3556
+INV-1033,Mountain Top Health,"$7,058.05",Insurance Services,Pending,2026-06-02,mountaintophealth@example.com,(555) 662-2700
+INV-1034,Summit Medical Center,"$3,363.82",Medical Supplies,Pending,2026-06-03,summitmedicalcenter@example.com,(555) 690-4786
+INV-1035,Riverbend Specialists,"$1,377.34",Medical Supplies,Overdue,2026-06-04,riverbendspecialists@example.com,(555) 446-7114
+INV-1036,Mountain Top Health,"$1,579.52",Software,Paid,2026-06-05,mountaintophealth@example.com,(555) 729-1980
+INV-1037,Northern Lights Optics,"$6,388.94",Insurance Services,Overdue,2026-06-06,northernlightsoptics@example.com,(555) 649-3356
+INV-1038,Golden Age Care,"$1,746.50",Medical Supplies,Paid,2026-06-07,goldenagecare@example.com,(555) 158-0781
+INV-1039,Oak Ridge Hospital,"$9,835.32",Medical Supplies,Paid,2026-06-08,oakridgehospital@example.com,(555) 781-7072
+INV-1040,Coastal Family Medicine,$235.35,Software,Paid,2026-06-09,coastalfamilymedicine@example.com,(555) 688-9459
+INV-1041,Central Lab Services,"$4,603.95",Subscriptions,Overdue,2026-06-10,centrallabservices@example.com,(555) 722-8686
+INV-1042,Summit Medical Center,"$5,691.56",Insurance Services,Paid,2026-06-11,summitmedicalcenter@example.com,(555) 248-1763
+INV-1043,Central Lab Services,"$2,170.81",Software,Paid,2026-06-12,centrallabservices@example.com,(555) 606-2150
+INV-1044,South Shore Orthopedics,"$7,233.04",Medical Supplies,Overdue,2026-06-13,southshoreorthopedics@example.com,(555) 762-5806
+INV-1045,Central Lab Services,"$3,703.18",Software,Pending,2026-06-14,centrallabservices@example.com,(555) 394-3753
+INV-1046,Valley View Diagnostics,"$4,986.72",Subscriptions,Paid,2026-06-15,valleyviewdiagnostics@example.com,(555) 843-6580
+INV-1047,Mountain Top Health,"$6,791.95",Consulting,Overdue,2026-06-16,mountaintophealth@example.com,(555) 921-4893
+INV-1048,Central Lab Services,"$1,740.23",Software,Paid,2026-06-17,centrallabservices@example.com,(555) 910-2414
+INV-1049,South Shore Orthopedics,"$2,573.74",Subscriptions,Paid,2026-06-18,southshoreorthopedics@example.com,(555) 206-6902
+INV-1050,Pinecrest Health,"$4,858.74",Consulting,Pending,2026-06-19,pinecresthealth@example.com,(555) 632-3784
+INV-1051,Golden Age Care,"$3,438.25",Consulting,Pending,2026-06-20,goldenagecare@example.com,(555) 701-0442
+INV-1052,Coastal Family Medicine,"$1,762.61",Consulting,Paid,2026-06-21,coastalfamilymedicine@example.com,(555) 878-6218
+INV-1053,Coastal Family Medicine,$638.16,Consulting,Paid,2026-06-22,coastalfamilymedicine@example.com,(555) 571-6794
+INV-1054,Pinecrest Health,"$7,666.27",Equipment,Pending,2026-06-23,pinecresthealth@example.com,(555) 448-7748
+INV-1055,Coastal Family Medicine,"$1,839.26",Consulting,Pending,2026-06-24,coastalfamilymedicine@example.com,(555) 500-3432
+INV-1056,Oak Ridge Hospital,"$1,202.94",Medical Supplies,Overdue,2026-06-25,oakridgehospital@example.com,(555) 763-5334
+INV-1057,Harbor View Clinic,"$3,438.45",Consulting,Paid,2026-06-26,harborviewclinic@example.com,(555) 109-1679
+INV-1058,Riverbend Specialists,$881.04,Consulting,Overdue,2026-06-27,riverbendspecialists@example.com,(555) 367-4000
+INV-1059,South Shore Orthopedics,"$7,371.43",Medical Supplies,Paid,2026-06-28,southshoreorthopedics@example.com,(555) 820-9963
+INV-1060,Oak Ridge Hospital,"$5,598.05",Consulting,Overdue,2026-06-29,oakridgehospital@example.com,(555) 735-7053
+INV-1061,City Medical Group,"$3,029.02",Consulting,Paid,2026-06-30,citymedicalgroup@example.com,(555) 269-2198
+INV-1062,Pinecrest Health,"$4,497.10",Software,Paid,2026-07-01,pinecresthealth@example.com,(555) 533-5662
+INV-1063,South Shore Orthopedics,"$8,610.12",Medical Supplies,Paid,2026-07-02,southshoreorthopedics@example.com,(555) 337-7181
+INV-1064,City Medical Group,"$6,343.34",Subscriptions,Pending,2026-07-03,citymedicalgroup@example.com,(555) 127-1342
+INV-1065,Oak Ridge Hospital,"$6,975.29",Consulting,Pending,2026-07-04,oakridgehospital@example.com,(555) 740-1506
+INV-1066,South Shore Orthopedics,"$8,541.38",Consulting,Paid,2026-07-05,southshoreorthopedics@example.com,(555) 638-5434
+INV-1067,South Shore Orthopedics,"$7,669.93",Insurance Services,Overdue,2026-07-06,southshoreorthopedics@example.com,(555) 200-5514
+INV-1068,Oak Ridge Hospital,"$6,123.63",Consulting,Pending,2026-07-07,oakridgehospital@example.com,(555) 816-5531
+INV-1069,City Medical Group,"$7,300.95",Equipment,Pending,2026-07-08,citymedicalgroup@example.com,(555) 979-9006
+INV-1070,Riverbend Specialists,"$6,969.36",Subscriptions,Paid,2026-07-09,riverbendspecialists@example.com,(555) 396-0018
+INV-1071,Central Lab Services,"$2,178.60",Software,Paid,2026-07-10,centrallabservices@example.com,(555) 160-1102
+INV-1072,Mountain Top Health,"$1,596.11",Consulting,Pending,2026-07-11,mountaintophealth@example.com,(555) 244-8331
+INV-1073,Harbor View Clinic,"$1,503.74",Equipment,Overdue,2026-07-12,harborviewclinic@example.com,(555) 925-6477
+INV-1074,Prairie Rose Clinic,"$4,700.56",Equipment,Paid,2026-07-13,prairieroseclinic@example.com,(555) 864-6407
+INV-1075,Summit Medical Center,"$5,640.11",Consulting,Pending,2026-07-14,summitmedicalcenter@example.com,(555) 381-8449
+INV-1076,Mountain Top Health,"$6,729.13",Consulting,Paid,2026-07-15,mountaintophealth@example.com,(555) 166-3867
+INV-1077,Golden Age Care,"$5,784.12",Medical Supplies,Pending,2026-07-16,goldenagecare@example.com,(555) 461-7897
+INV-1078,Prairie Rose Clinic,"$8,902.14",Software,Overdue,2026-07-17,prairieroseclinic@example.com,(555) 399-1944
+INV-1079,Summit Medical Center,"$4,503.21",Equipment,Paid,2026-07-18,summitmedicalcenter@example.com,(555) 535-5853
+INV-1080,Oak Ridge Hospital,"$3,401.95",Medical Supplies,Pending,2026-07-19,oakridgehospital@example.com,(555) 704-8875
+INV-1081,Prairie Rose Clinic,"$1,256.74",Consulting,Pending,2026-07-20,prairieroseclinic@example.com,(555) 149-6730
+INV-1082,Mountain Top Health,$876.32,Software,Paid,2026-07-21,mountaintophealth@example.com,(555) 876-2574
+INV-1083,South Shore Orthopedics,"$6,721.45",Equipment,Paid,2026-07-22,southshoreorthopedics@example.com,(555) 611-8637
+INV-1084,City Medical Group,"$4,532.11",Medical Supplies,Pending,2026-07-23,citymedicalgroup@example.com,(555) 851-8733
+INV-1085,Golden Age Care,"$1,564.23",Consulting,Overdue,2026-07-24,goldenagecare@example.com,(555) 563-6991
+INV-1086,Riverbend Specialists,"$3,456.78",Software,Paid,2026-07-25,riverbendspecialists@example.com,(555) 391-6201
+INV-1087,Harbor View Clinic,"$7,890.12",Equipment,Pending,2026-07-26,harborviewclinic@example.com,(555) 854-7733
+INV-1088,Summit Medical Center,"$2,345.67",Subscriptions,Paid,2026-07-27,summitmedicalcenter@example.com,(555) 668-0493
+INV-1089,Oak Ridge Hospital,"$5,678.90",Medical Supplies,Overdue,2026-07-28,oakridgehospital@example.com,(555) 467-6854
+INV-1090,City Medical Group,"$1,234.56",Consulting,Pending,2026-07-29,citymedicalgroup@example.com,(555) 216-0555
+INV-1091,Riverbend Specialists,"$8,901.23",Software,Paid,2026-07-30,riverbendspecialists@example.com,(555) 338-3646
+INV-1092,Harbor View Clinic,"$4,567.89",Equipment,Pending,2026-07-31,harborviewclinic@example.com,(555) 647-3572
+INV-1093,Summit Medical Center,"$2,345.67",Subscriptions,Paid,2026-08-01,summitmedicalcenter@example.com,(555) 643-6115
+INV-1094,Oak Ridge Hospital,"$5,678.90",Medical Supplies,Overdue,2026-08-02,oakridgehospital@example.com,(555) 901-7498
+INV-1095,City Medical Group,"$1,234.56",Consulting,Pending,2026-08-03,citymedicalgroup@example.com,(555) 139-8352
+INV-1096,Oak Ridge Hospital,"$1,908.78",Consulting,Pending,2026-08-04,oakridgehospital@example.com,(555) 248-1267
+INV-1097,Oak Ridge Hospital,"$8,183.23",Equipment,Overdue,2026-08-05,oakridgehospital@example.com,(555) 548-1276
+INV-1098,Summit Medical Center,"$4,756.59",Subscriptions,Overdue,2026-08-06,summitmedicalcenter@example.com,(555) 424-8168
+INV-1099,Eastside Wellness,"$6,818.21",Consulting,Paid,2026-08-07,eastsidewellness@example.com,(555) 241-0153
+INV-1100,City Medical Group,"$9,370.19",Insurance Services,Overdue,2026-08-08,citymedicalgroup@example.com,(555) 531-8765
