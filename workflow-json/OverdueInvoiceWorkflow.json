@@ -4,7 +4,7 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=You are an accounts receivable assistant.\n\nUse ONLY the invoice data below.\nDo not invent customers or invoices.\n\n{{ JSON.stringify($input.all()) }}\n\nTasks:\n1. Identify overdue invoices\n2. Group invoices by customer\n3. Calculate total overdue amount\n4. Generate a professional reminder email draft\n\n\nReturn valid JSON only.\nDo not include explanations.\nDo not include markdown or code fences.\nFollow the output format required by the system.\nEach customer MUST include a valid customerEmail field from the input data. Do not omit it.\n\nReturn data like this:\n{\n  \"customers\": [\n    {\n      \"customerName\": \"...\",\n      \"email\": \"...\",\n      \"invoiceID\": \"...\",\n      \"amount\": 0,\n      \"emailSubject\": \"...\",\n      \"emailBody\": \"...\"\n    }\n  ]\n}\nDo not wrap the response in an \"output\" object.",
+        "text": "=You are an accounts receivable assistant.\n\nUse ONLY the invoice data below.\nDo not invent customers or invoices.\n\n{{ JSON.stringify($input.all()) }}\n\nTasks:\n1. Identify overdue invoices\n2. Group invoices by customer\n3. Get number of days overdue \n4. Calculate total overdue amount\n5. Generate a professional reminder email draft\n\nFollow this guide for email tone, based on Days overdue value. \n1. Early Overdue (1–7 Days Late)\nFor payments just past the due date, assume the client missed the notification or had a technical issue.\n\nSubject Line: \"Invoice #[Number] – Just Checking In\" or \"Reminder: Payment Due for Invoice #[Number]\"\nTone: Polite, no blame, friendly. \nKey Content:\nState the invoice number, amount due, and original due date.\nAttach the invoice or provide a direct payment link.\nAsk if there are any issues preventing payment.\nExample: \"I hope you’re having a great week. Based on my records, I haven’t received payment for [Project Name], which was due yesterday. The current balance is [Amount]. I have attached the invoice; you can pay via [Link]. Let me know if you have any questions.\" \n2. Moderately Overdue (14–30 Days Late)\nIf the client has not responded, shift to a firmer tone. Weekly or biweekly reminders are effective without being overbearing.\n\nSubject Line: \"Overdue: Invoice #[Number] – Payment Needed\" or \"Urgent: Invoice #[Number] Now 30 Days Overdue\"\nTone: Firm but respectful, direct. \nKey Content:\nExplicitly state the number of days overdue.\nReference any agreed-upon late fees or contract terms.\nRequest a specific date for payment or a payment plan.\nExample: \"This is a reminder that payment for Invoice #[Number] is now [X] days overdue. The balance of [Amount] is due immediately. Per our agreement, a late fee of [Amount] applies. Please remit payment by [Date] or contact us to discuss a payment plan.\" \n3. Severely Overdue (60–90+ Days Late)\nAt this stage, the likelihood of payment drops significantly. Emails must be formal, concise, and outline specific consequences.\n\nSubject Line: \"Action Required: Invoice #[Number] Significantly Overdue\" or \"Final Notice: Invoice #[Number]\"\nTone: Serious, factual, formal. \nKey Content:\nState that the account is in default.\nOutline next steps, such as referral to a collections agency or legal action.\nProvide a final deadline (e.g., 7 days) before escalation.\nExample: \"This is a final notice regarding Invoice #[Number], which is now [90+] days overdue. If payment is not received by [Date], this account will be referred to a collections agency. Please remit the full balance of [Amount] immediately to avoid further action.\n\nReturn valid JSON only.\nDo not include explanations.\nDo not include markdown or code fences.\nFollow the output format required by the system.\nEach customer MUST include a valid customerEmail field from the input data. Do not omit it.\n\nReturn data like this:\n{\n  \"customers\": [\n    {\n      \"customerName\": \"...\",\n      \"email\": \"...\",\n      \"invoiceID\": \"...\",\n      \"amount\": 0,\n      \"emailSubject\": \"...\",\n      \"emailBody\": \"...\"\n    }\n  ]\n}\nDo not wrap the response in an \"output\" object.",
         "hasOutputParser": true,
         "options": {}
       },
@@ -20,7 +20,7 @@
     },
     {
       "parameters": {
-        "modelName": "models/gemini-2.5-flash",
+        "modelName": "models/gemini-2.0-flash-lite",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
@@ -159,19 +159,6 @@
     },
     {
       "parameters": {
-        "maxItems": 5
-      },
-      "type": "n8n-nodes-base.limit",
-      "typeVersion": 1,
-      "position": [
-        1072,
-        -16
-      ],
-      "id": "7c6bf814-ff9c-4e40-a668-9e7fc96cf2ce",
-      "name": "Limit"
-    },
-    {
-      "parameters": {
         "aggregate": "aggregateAllItemData",
         "options": {}
       },
@@ -192,8 +179,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        1760,
-        16
+        1808,
+        -16
       ],
       "id": "9e7c9789-43b3-4159-963e-29a0cdf51391",
       "name": "Split Out"
@@ -222,9 +209,72 @@
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
-          "value": {},
+          "value": {
+            "amount": 0
+          },
           "matchingColumns": [],
-          "schema": [],
+          "schema": [
+            {
+              "id": "customerName",
+              "displayName": "customerName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "invoiceID",
+              "displayName": "invoiceID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "amount",
+              "displayName": "amount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "emailSubject",
+              "displayName": "emailSubject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "emailBody",
+              "displayName": "emailBody",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
           "attemptToConvertTypes": false,
           "convertFieldsToString": true
         },
@@ -242,6 +292,17 @@
       "name": "Call 'My Sub-Workflow 1'",
       "alwaysOutputData": false,
       "executeOnce": false
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        -16
+      ],
+      "id": "8da8dbc9-29bd-4dd7-9eb0-33a0361f2133",
+      "name": "Limit"
     }
   ],
   "pinData": {},
@@ -323,17 +384,6 @@
         ]
       ]
     },
-    "Limit": {
-      "main": [
-        [
-          {
-            "node": "Aggregate",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Aggregate": {
       "main": [
         [
@@ -378,6 +428,17 @@
           }
         ]
       ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": true,
@@ -385,7 +446,7 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "30dfedb4-a71f-4150-96de-c3b6738f4dc4",
+  "versionId": "bbfa277d-e5d5-401e-be2f-1a5a942ff287",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "ffd95b0d12a70c9f963c88f73df1db6aa9810c16fa5a1576974dfd19b8950ed0"
